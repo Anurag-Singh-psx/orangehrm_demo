@@ -27,13 +27,12 @@ public class Login extends KeywordEngine {
     @FindBy(xpath = "//button[contains(@class,'"+ Framework.Classes.ORANGE_HRM_LOGIN_BUTTON +"')]")
     WebElement loginButton;
 
-    @Step("Enter admin login details")
-    public void enterLoginDetails(Map<String,String> dataCells){
-        if (dataCells.containsKey(Framework.Constants.USER_NAME)){
-            setElement(userNameField,dataCells.get(Framework.Constants.USER_NAME));
+    public void enterLoginDetails(Map<String,String> data){
+        if (hasValidValues(data,Framework.Constants.USER_NAME)){
+            setElement(userNameField,data.get(Framework.Constants.USER_NAME));
         }
-        if (dataCells.containsKey(Framework.Constants.PASSWORD)){
-            setElement(passwordField,dataCells.get(Framework.Constants.PASSWORD));
+        if (hasValidValues(data,Framework.Constants.PASSWORD)){
+            setElement(passwordField,data.get(Framework.Constants.PASSWORD));
         }
     }
 

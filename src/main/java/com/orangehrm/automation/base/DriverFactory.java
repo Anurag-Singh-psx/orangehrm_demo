@@ -8,14 +8,17 @@ public class DriverFactory {
     private static WebDriver driver;
 
     public static void initDriver(String browserName){
-        if (browserName.equalsIgnoreCase("Chrome")){
-            ChromeOptions chromeOptions=new ChromeOptions();
-            chromeOptions.addArguments("--incognito");
-            chromeOptions.setAcceptInsecureCerts(true);
-            driver=new ChromeDriver(chromeOptions);
-            driver.manage().deleteAllCookies();
-            driver.manage().window().maximize();
+        if (driver == null) {
+            if (browserName.equalsIgnoreCase("Chrome")){
+                ChromeOptions chromeOptions=new ChromeOptions();
+                chromeOptions.addArguments("--incognito");
+                chromeOptions.setAcceptInsecureCerts(true);
+                driver=new ChromeDriver(chromeOptions);
+                driver.manage().deleteAllCookies();
+                driver.manage().window().maximize();
+            }
         }
+
     }
 
     public static WebDriver getWebDriver(){

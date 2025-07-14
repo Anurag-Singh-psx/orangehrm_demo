@@ -1,11 +1,10 @@
 package com.orangehrm.automation.utils;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class LogicalCodingPractice {
     public static void main(String[] args) {
-        swapString();
+        practice4();
     }
 
     public static void reverseSmallestLargestWord(){
@@ -125,4 +124,149 @@ public class LogicalCodingPractice {
         }
         System.out.println(stringBuilder);
     }
+
+    public static void practice1(){
+        HashMap<String,String> innerMap=new HashMap<>();
+        innerMap.put("E","10");
+        innerMap.put("B","20");
+
+        HashMap<String,Object> outerMap=new HashMap<>();
+        outerMap.put("A","30");
+        outerMap.put("G",innerMap);
+        outerMap.put("F","40");
+        outerMap.put("S","50");
+
+        System.out.println(outerMap);
+    }
+
+    public static void practice2(){
+        // I/P=> [1,2,3] [a,b,c] O/P=> [1,a,2,b,3,c]
+
+        ArrayList<String> List1=new ArrayList<>();
+        List1.add("1");
+        List1.add("2");
+        List1.add("3");
+
+        ArrayList<String> List2=new ArrayList<>();
+        List2.add("a");
+        List2.add("b");
+        List2.add("c");
+        StringBuilder stringBuilder=new StringBuilder();
+
+        for (int i = 0; i < List1.size(); i++) {
+            stringBuilder.append(List1.get(i)).append(",").append(" ").append(List2.get(i)).append(",").append(" ");
+        }
+
+
+        System.out.println(stringBuilder);
+
+        ArrayList<String> List3=new ArrayList<>();
+        for (int i = 0; i < List1.size(); i++) {
+            List3.add(List1.get(i));
+            List3.add(List2.get(i));
+        }
+        System.out.println(List3);
+    }
+
+    public static void practice3(){
+        // I/P=> tomorrow  O/P=> tom$rrow
+
+        String input="Tomorrow";
+        int count=1;
+        StringBuilder stringBuilder=new StringBuilder();
+        for (char output:input.toCharArray()){
+            if (output=='O' || output=='o'){
+                if (count==2){
+                    stringBuilder.append("$");
+                }
+                count++;
+            }
+            stringBuilder.append(output);
+        }
+
+        System.out.println(stringBuilder);
+    }
+
+    public static void practice4(){
+        // I/P=> [1,2,4,2,5,9,2]  O/P=> tom$rrow
+
+        int[] input={1,2,4,2,5,9,2};
+
+        for (int i = 0; i < input.length; i++) {
+            for (int j = i+1; j < input.length; j++) {
+                if (input[i]>input[j]){
+                    int temp=input[i];
+                    input[i]=input[j];
+                    input[j]=temp;
+                }
+            }
+        }
+        Set<Integer> sortedSet= new TreeSet<Integer>();
+        System.out.println(Arrays.toString(input));
+        for (int num:input){
+            sortedSet.add(num);
+        }
+        System.out.println(sortedSet);
+
+        List<Integer> integers=new ArrayList<>(sortedSet);
+        System.out.println("Second smallest number: "+integers.get(1));
+    }
+
+    public static void practice5(){
+        // I/P=> [1,2,4,2,5,9,2]  O/P=> tom$rrow
+
+        int[] input={1,2,4,2,5,9,2};
+
+        for (int i = 0; i < input.length; i++) {
+            for (int j = i+1; j < input.length; j++) {
+                if (input[i]<input[j]){
+                    int temp=input[i];
+                    input[i]=input[j];
+                    input[j]=temp;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(input));
+        Set<Integer> sortedSet= new TreeSet<>(Collections.reverseOrder());
+        for (int num:input){
+            sortedSet.add(num);
+        }
+        List<Integer> integers=new ArrayList<>(sortedSet);
+        System.out.println("Second largest number: "+integers.get(1));
+    }
+
+    public static void practice6(){
+
+        String[] input={"a","v","1","5","@","sam"};
+
+        System.out.println("Select a value to search its index :"+ Arrays.toString(input));
+
+        Scanner scanner=new Scanner(System.in);
+        String searchParameter= scanner.nextLine();
+        boolean flag=false;
+        for (int i = 0; i < input.length; i++) {
+            if (input[i].equals(searchParameter)){
+                System.out.println("Index number for given search value : "+i );
+                flag=true;
+                break;
+            }
+        }
+        if (!flag){
+            System.out.println("Please check you have entered correct value");
+        }
+    }
+
+    public static void practice7(){
+        //input="My  Name   Is  SriRam" O/P="My Name Is SriRam"
+        String input="My  Name   Is  SriRam";
+        String[] splitted=input.trim().split("\\s+");
+        System.out.println("Select a value to search its index :"+ Arrays.toString(splitted));
+        String result = String.join(" ", splitted);
+        System.out.println("Select a value to search its index :"+ result);
+
+        String output =input.trim().replaceAll("\\s+", " ");
+        System.out.println("Select a value to search its index :"+ output);
+
+    }
+
 }

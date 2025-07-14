@@ -5,7 +5,6 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -23,38 +22,38 @@ public class AllureTestListeners extends DriverFactory implements ITestListener 
 
     @Override
     public void onTestStart(ITestResult result) {
-        ITestListener.super.onTestStart(result);
+        System.out.println("Test Started: " + getTestMethodName(result));
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        if (getWebDriver()!=null){
+        if (getWebDriver() != null) {
             saveScreenshot(getWebDriver());
         }
-        System.out.println("Test failed: " + getTestMethodName(result));
+        System.out.println("Test Passed: " + getTestMethodName(result));
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        if (getWebDriver()!=null){
+        if (getWebDriver() != null) {
             saveScreenshot(getWebDriver());
         }
-        System.out.println("Test failed: " + getTestMethodName(result));
+        System.out.println("Test Failed: " + getTestMethodName(result));
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        ITestListener.super.onTestSkipped(result);
+        System.out.println("Test Skipped: " + getTestMethodName(result));
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        ITestListener.super.onTestFailedButWithinSuccessPercentage(result);
+        System.out.println("Test Failed But Within Success Percentage: " + getTestMethodName(result));
     }
 
     @Override
     public void onTestFailedWithTimeout(ITestResult result) {
-        ITestListener.super.onTestFailedWithTimeout(result);
+        onTestFailure(result);
     }
 
     @Override
@@ -64,6 +63,6 @@ public class AllureTestListeners extends DriverFactory implements ITestListener 
 
     @Override
     public void onFinish(ITestContext context) {
-        ITestListener.super.onFinish(context);
+        System.out.println("I am in onFinish method " + context.getName());
     }
 }

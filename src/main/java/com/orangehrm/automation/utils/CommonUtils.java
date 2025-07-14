@@ -27,4 +27,14 @@ public class CommonUtils extends KeywordEngine {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         Assert.assertTrue(element.isDisplayed());
     }
+
+    public void clickOnTopNavbar(String item){
+        String xpath="//*[@class='"+Framework.Classes.OXD_TOPBAR_BODY_NAV+"']//*[@class='"+Framework.Classes.OXD_TOPBAR_BODY_NAV_TAB_ITEM+"' and normalize-space(text())='"+item+"']";
+        WebDriverWait webDriverWait = new WebDriverWait(getWebDriver(), Duration.ofSeconds(90));
+        try{
+            webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+        }catch (Exception e){
+            System.out.println("Failed to click on item under top nav bar.");
+        }
+    }
 }

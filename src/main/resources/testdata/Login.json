@@ -1,20 +1,6 @@
 {
   "ADMIN_LOGIN": {
     "USERNAME": "Admin",
-    "PASSWORD": "admin123",
-
-    "MADAM": {
-      "AS": "dda"
-    }
-  },
-  "SET": [
-    {
-      "USERNAME": "Admasdin",
-      "PASSWORD": "admasdasdin123"
-    },
-    {
-      "USERNAME": "a",
-      "PASSWORD": "admin123"
-    }
-  ]
+    "PASSWORD": "admin123"
+  }
 }

@@ -3,6 +3,7 @@
     <test name="Login Tests">
         <classes>
             <class name="com.orangehrm.testcases.Login._01_AdminLogin"/>
+            <class name="com.orangehrm.testcases.AdminModule.PIM._001_AddEmployee"/>
         </classes>
     </test>
 </suite>
